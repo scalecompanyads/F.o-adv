@@ -288,8 +288,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hero { padding-top: 250px; }
     .hero h1 { font-size: clamp(2.6rem, 5.4vw, 3.9rem); }
   }
+  @media (max-width: 760px) {
+    /* Hero mobile: foto + texto + botão em 100svh; os 3 destaques ficam logo abaixo da dobra */
+    .hero { display: block; min-height: 0; padding: 0; }
+    .hero-media { height: 100vh; height: 100svh; }
+    .hero-media::after { background: linear-gradient(180deg, rgba(38,8,19,.34) 0%, rgba(38,8,19,0) 22%); }
+    .hero .hero-main { display: flex; flex-direction: column; justify-content: flex-end; min-height: 100vh; min-height: 100svh; padding-top: 96px; padding-bottom: 16px; }
+    .hero-copy { position: relative; }
+    .hero-copy::before { content: ""; position: absolute; z-index: -1; left: -100vw; right: -100vw; top: -170px; bottom: -60px; background: linear-gradient(180deg, rgba(38,8,19,0) 0, rgba(38,8,19,.55) 80px, rgba(38,8,19,.9) 150px, var(--wine) 200px); }
+    .hero-row { padding-bottom: 0; }
+    .lead { color: var(--on-dark); }
+    .hero-note { color: var(--on-dark); }
+    .hero-sits { margin-bottom: 6px; }
+  }
   @media (max-width: 760px) and (max-height: 740px) {
-    .hero { padding-top: 110px; }
     .hero h1 { font-size: 2.3rem; }
     .hero-row { gap: 16px; margin-top: 12px; }
     .lead { font-size: 15px; line-height: 1.5; }
@@ -298,8 +310,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   @media (max-width: 420px) {
     .wrap { padding: 0 20px; }
-    .topbar .btn { padding: 10px 15px; font-size: 12.5px; }
-    .brand img { height: 36px; }
+    .topbar .btn { min-height: 40px; padding: 8px 13px; font-size: 12px; white-space: nowrap; }
+    .topbar-in { padding-left: 12px; }
+    .brand img { height: 32px; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -354,7 +367,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <img src="assets/hero-desktop.jpg" alt="Piscina de resort ao entardecer, com palmeiras refletidas na água" width="2000" height="1200" fetchpriority="high">
       </picture>
     </div>
-    <div class="wrap">
+    <div class="wrap hero-main">
+      <div class="hero-copy">
       <p class="kicker hero-kicker rv">Cancelamento e distrato de cotas</p>
       <h1 class="rv" style="--d:.05s">Quer cancelar sua cota de resort? <em>Entenda suas opções</em> com orientação jurídica.</h1>
       <div class="hero-row rv" style="--d:.12s">
@@ -364,6 +378,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <p class="hero-note">Atendimento pelo WhatsApp</p>
         </div>
       </div>
+      </div>
+    </div>
+    <div class="wrap">
       <nav class="hero-sits rv" style="--d:.18s" aria-label="Situações atendidas">
         <a href="#inaugurado"><svg class="ic" aria-hidden="true"><use href="#ic-umbrella"/></svg>Resort já inaugurado<svg class="ic go" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
         <a href="#atraso"><svg class="ic" aria-hidden="true"><use href="#ic-hourglass-medium"/></svg>Entrega atrasada<svg class="ic go" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
